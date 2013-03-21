@@ -4,12 +4,10 @@ LIBS      = -lX11 -lXtst
 PREFIX    = /usr/local
 BINPREFIX = $(PREFIX)/bin
 
-SRC = keylock.c
-all: keylock
+all:
+	$(CC) -o keylock keylock.c $(CFLAGS) $(LIBS)
 
-keylock: $(SRC) Makefile
-	$(CC) -o $@ $(SRC) $(CFLAGS) $(LIBS)
-install: all
+install:
 	@echo "Installing keylock in $(DESTDIR)$(BINPREFIX)"
 	@install -D -m 755 keylock $(DESTDIR)$(BINPREFIX)/keylock
 
